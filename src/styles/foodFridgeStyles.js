@@ -29,8 +29,8 @@ export const ItemsContainer = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   background-color: #fff;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   padding: 2rem;
 `;
 

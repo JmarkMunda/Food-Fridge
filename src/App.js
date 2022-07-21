@@ -1,12 +1,13 @@
-import React from 'react'
-import styled from 'styled-components';
-import Sidebar from './Components/SideBarComponent';
-import FoodFridgeComponent from './Components/FoodFridgeComponent';
-import { FoodProvider } from './Context/globalContext';
+import React from "react";
+import styled from "styled-components";
+import BasketComponent from "./Components/BasketComponent";
+import FoodFridgeComponent from "./Components/FoodFridgeComponent";
+import RecipeComponent from "./Components/RecipeComponent";
+import { FoodProvider } from "./Context/GlobalContext";
 
 const Container = styled.div`
   display: flex;
-  background-color: orange;
+  background-color: pink;
 `;
 
 function App() {
@@ -14,9 +15,11 @@ function App() {
     <FoodProvider>
       <Container>
         {/* Sidebar */}
-        <Sidebar />
+        <BasketComponent />
         {/* Food Container */}
         <FoodFridgeComponent />
+        {/* Recipe */}
+        <RecipeComponent />
       </Container>
     </FoodProvider>
   );

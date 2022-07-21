@@ -16,13 +16,19 @@ import {
   FullDetailsLink,
 } from "../styles/foodFridgeStyles";
 // Context
-import { FoodContext } from "../Context/globalContext";
+import { FoodContext } from "../Context/GlobalContext";
 import axios from "axios";
 
 //  ------------------------------------------------------------
 const FoodFridgeComponent = () => {
-  const { timeoutId, setTimeoutId, foodList, setFoodList, setToggleBasket } =
-    useContext(FoodContext);
+  const {
+    timeoutId,
+    setTimeoutId,
+    foodList,
+    setFoodList,
+    setToggleBasket,
+    setToggleRecipe,
+  } = useContext(FoodContext);
 
   // Fetch Recipe API
   const fetchAPI = async (searchString) => {
@@ -55,7 +61,7 @@ const FoodFridgeComponent = () => {
           </NavIcon>
           <h1>Food Fridge</h1>
           <NavIcon>
-            <GrNotes />
+            <GrNotes onClick={() => setToggleRecipe(true)} />
           </NavIcon>
         </Navigation>
         <Search>
@@ -75,7 +81,9 @@ const FoodFridgeComponent = () => {
               <Food key={index}>
                 <FoodImage src={image} alt="Food" />
                 <FoodName>{label}</FoodName>
-                <IngredientsButton>View Ingredients</IngredientsButton>
+                <IngredientsButton onClick={() => setToggleRecipe(true)}>
+                  View Ingredients
+                </IngredientsButton>
                 <FullDetailsButton onClick={() => window.open(url)}>
                   Full Details
                   <FullDetailsLink>{source}</FullDetailsLink>

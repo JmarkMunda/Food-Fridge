@@ -6,6 +6,7 @@ const FoodProvider = ({ children }) => {
   const [timeoutId, setTimeoutId] = useState();
   const [foodList, setFoodList] = useState([]);
   const [toggleBasket, setToggleBasket] = useState(false);
+  const [toggleRecipe, setToggleRecipe] = useState(false);
 
   return (
     <FoodContext.Provider
@@ -16,6 +17,8 @@ const FoodProvider = ({ children }) => {
         setFoodList,
         toggleBasket,
         setToggleBasket,
+        toggleRecipe,
+        setToggleRecipe,
       }}>
       {children}
     </FoodContext.Provider>
