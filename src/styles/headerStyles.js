@@ -21,10 +21,3 @@ export const NavIcon = styled.span`
     color: #fff;
   }
 `;
-
-export const TitleBox = styled.div`
-  width: 90%;
-  box-shadow: 1px 1px 4px gray;
-  padding: 0.8rem;
-  margin: 0 auto;
-`;

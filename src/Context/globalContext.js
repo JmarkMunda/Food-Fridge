@@ -7,6 +7,7 @@ const FoodProvider = ({ children }) => {
   const [foodList, setFoodList] = useState([]);
   const [toggleBasket, setToggleBasket] = useState(false);
   const [toggleRecipe, setToggleRecipe] = useState(false);
+  const [food, setFood] = useState({});
 
   return (
     <FoodContext.Provider
@@ -19,6 +20,8 @@ const FoodProvider = ({ children }) => {
         setToggleBasket,
         toggleRecipe,
         setToggleRecipe,
+        food,
+        setFood,
       }}>
       {children}
     </FoodContext.Provider>

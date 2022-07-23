@@ -28,6 +28,7 @@ const FoodFridgeComponent = () => {
     setFoodList,
     setToggleBasket,
     setToggleRecipe,
+    setFood,
   } = useContext(FoodContext);
 
   // Fetch Recipe API
@@ -52,16 +53,23 @@ const FoodFridgeComponent = () => {
     setTimeoutId(timeout);
   };
 
+  // Selected Food
+  const handleSelect = (id) => {
+    const selectedItem = foodList.find((item, index) => index === id);
+    setFood(selectedItem);
+    setToggleRecipe(true);
+  };
+
   return (
     <FoodListContainer>
       <Header>
         <Navigation>
           <NavIcon>
-            <BsBasket onClick={() => setToggleBasket(true)} />
+            <GrNotes onClick={() => setToggleBasket(true)} />
           </NavIcon>
           <h1>Food Fridge</h1>
           <NavIcon>
-            <GrNotes onClick={() => setToggleRecipe(true)} />
+            <BsBasket onClick={() => setToggleRecipe(true)} />
           </NavIcon>
         </Navigation>
         <Search>
@@ -81,7 +89,7 @@ const FoodFridgeComponent = () => {
               <Food key={index}>
                 <FoodImage src={image} alt="Food" />
                 <FoodName>{label}</FoodName>
-                <IngredientsButton onClick={() => setToggleRecipe(true)}>
+                <IngredientsButton onClick={() => handleSelect(index)}>
                   View Ingredients
                 </IngredientsButton>
                 <FullDetailsButton onClick={() => window.open(url)}>
