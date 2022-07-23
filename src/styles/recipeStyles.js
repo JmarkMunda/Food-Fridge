@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const RecipeContainer = styled.div`
+  z-index: 10;
   overflow-y: auto;
   position: fixed;
   top: 0;

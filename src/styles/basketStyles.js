@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const BasketContainer = styled.div`
+  z-index: 10;
   position: fixed;
   top: 0;
   left: -100%;

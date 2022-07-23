@@ -11,8 +11,11 @@ const TitleBox = styled.div`
   background-color: #fff;
   width: 90%;
   box-shadow: 0 1px 4px gray;
-  padding: 0.8rem;
+  padding: 1rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 `;
 
 const RecipeImage = styled.img`
@@ -46,9 +49,16 @@ const Ingredient = styled.li`
   margin: 1rem 0;
 `;
 
-const IngredientText = styled.div`
-  padding: 0 1rem;
+const IngredientHeader = styled.div`
+  color: gray;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const IngredientText = styled.div`
+  display: flex;
+  margin-right: 0.8rem;
 `;
 
 const IngredientImage = styled.img`
@@ -59,6 +69,29 @@ const IngredientImage = styled.img`
 const IngredientIcon = styled.span`
   color: #3cb371;
   margin-right: 0.5rem;
+`;
+
+const FullRecipeButton = styled.button`
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1rem;
+  color: green;
+  background-color: #fff;
+  border: 1px solid green;
+  border-radius: 0.5rem;
+  transition: all 0.2s linear;
+  width: 100%;
+  &:hover {
+    background-color: green;
+    color: #fff;
+  }
+`;
+
+export const FullDetailsLink = styled.span`
+  margin-top: 0.3rem;
+  font-style: italic;
+  font-size: 0.5rem;
+  color: gray;
 `;
 
 const RecipeComponent = () => {
@@ -76,14 +109,14 @@ const RecipeComponent = () => {
       <TitleBox>
         {/* Food name */}
         {recipe && <h4>{recipe.label}</h4>}
-        <IngredientText>
+        <IngredientHeader>
           {/* Meal type */}
           {recipe &&
             recipe.mealType.map((data, index) => <p key={index}>{data}</p>)}
           {/* Dish Type */}
           {recipe &&
             recipe.dishType.map((data, index) => <p key={index}>{data}</p>)}
-        </IngredientText>
+        </IngredientHeader>
       </TitleBox>
       <IngredientsContainer>
         <h4>Ingredients: </h4>
@@ -93,17 +126,23 @@ const RecipeComponent = () => {
             return (
               <article key={foodId}>
                 <Ingredient>
-                  <div style={{ display: "flex" }}>
+                  <IngredientText>
                     <IngredientIcon>
                       <BsCheckCircleFill />
                     </IngredientIcon>
                     <p>{text}</p>
-                  </div>
+                  </IngredientText>
                   <IngredientImage src={image} />
                 </Ingredient>
               </article>
             );
           })}
+        {recipe && (
+          <FullRecipeButton onClick={() => window.open(recipe.url)}>
+            <p>View Full Recipe</p>
+            <FullDetailsLink>Source: {recipe.source}</FullDetailsLink>
+          </FullRecipeButton>
+        )}
       </IngredientsContainer>
     </RecipeContainer>
   );

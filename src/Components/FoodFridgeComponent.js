@@ -11,9 +11,9 @@ import {
   Food,
   FoodImage,
   FoodName,
+  ButtonContainer,
   IngredientsButton,
   FullDetailsButton,
-  FullDetailsLink,
 } from "../styles/foodFridgeStyles";
 // Context
 import { FoodContext } from "../Context/GlobalContext";
@@ -35,7 +35,7 @@ const FoodFridgeComponent = () => {
   const fetchAPI = async (searchString) => {
     try {
       const data = await axios.get(
-        `/search?q=${searchString}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}`
+        `/search?q=${searchString}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}&to=30`
       );
       const response = data.data;
       setFoodList(response.hits);
@@ -84,18 +84,11 @@ const FoodFridgeComponent = () => {
       <ItemsContainer>
         {foodList.length !== 0 ? (
           foodList.map((data, index) => {
-            const { label, image, url, source } = data.recipe;
+            const { label, image } = data.recipe;
             return (
-              <Food key={index}>
+              <Food key={index} onClick={() => handleSelect(index)}>
                 <FoodImage src={image} alt="Food" />
                 <FoodName>{label}</FoodName>
-                <IngredientsButton onClick={() => handleSelect(index)}>
-                  View Ingredients
-                </IngredientsButton>
-                <FullDetailsButton onClick={() => window.open(url)}>
-                  Full Details
-                  <FullDetailsLink>{source}</FullDetailsLink>
-                </FullDetailsButton>
               </Food>
             );
           })

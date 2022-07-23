@@ -32,9 +32,11 @@ export const ItemsContainer = styled.div`
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   padding: 2rem;
+  gap: 1rem;
 `;
 
 export const Food = styled.div`
+  position: relative;
   box-shadow: 1px 1px 5px 0 gray;
   border-radius: 0.5rem;
   display: flex;
@@ -42,41 +44,56 @@ export const Food = styled.div`
   align-items: center;
   flex-direction: column;
   width: 300px;
-  padding: 0.8rem;
   margin: 1rem 0;
 `;
 
 export const FoodImage = styled.img`
   object-fit: cover;
-  height: 10rem;
+  height: 15rem;
   width: 100%;
 `;
 
 export const FoodName = styled.p`
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+  padding: 0.5rem 0.8rem;
   font-weight: bold;
   margin: 0.8rem 0;
   text-align: center;
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
 export const IngredientsButton = styled.button`
+  flex: 1;
   cursor: pointer;
   font-weight: bold;
   padding: 1rem;
-  width: 100%;
   color: green;
-  border: 1px solid green;
-  border-radius: 0.5rem;
-  margin: 0.3rem 0;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: #4ed88c;
+  color: #fff;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: #3cb371;
+  }
 `;
 
 export const FullDetailsButton = styled(IngredientsButton)`
-  color: red;
-  border: 1px solid red;
-`;
-
-export const FullDetailsLink = styled.p`
-  margin-top: 0.3rem;
-  font-style: italic;
-  font-size: 0.5rem;
-  color: gray;
+  flex: 1;
+  background-color: pink;
+  border: 1px solid pink;
+  color: #000;
+  &:hover {
+    background-color: transparent;
+    color: pink;
+  }
 `;
